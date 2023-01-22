@@ -23,7 +23,7 @@
 				Local				
 				<property name="url" value="jdbc:mariadb://modamtech.com:3306/aeit" />
                 -->				
-				<property name="url" value="jdbc:mariadb://localhost:3306/aeit" />
+				<property name="url" value="jdbc:mariadb://modamtech.com:3306/aeit" />
 				<property name="username" value="aeit" />
 				<property name="password" value="susx2020" />
 				<!-- ping query -->
