@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>DAILY ENGLISH</title>
+				
+	    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+   
+        <link type="text/css" rel="stylesheet" href="css/style.css" />
+   
+        <script src="js/modam.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="page1" data-theme="a">
+  	        <div data-role="header"  data-position="fixed" data-theme="e">          
+				<h2 style="color:#800000;">DAILY ENGLISH</h2>
+				<a href="/modam.html" data-icon="home" data-iconpos="notext">home</a>				
+			</div>
+			<div data-role="content">
+			    <div class="ui-grid-solo">
+					<div class="ui-block-a" align="center">  
+				        <p><img style="max-width:150%;" src="img/modam-tech.png"></p>
+				    </div>
+				</div>        			
+				<form id="frmModam" name="frmModam">
+		            <ul data-role="listview" data-inset="true">
+		            	<li><a href="#" onclick="initConnection(1);"> Vocabulary </a></li>
+		            	<li><a href="#" onclick="initConnection(2);"> Living English </a></li>
+		            	<li><a href="#" onclick="initConnection(3);"> Living English Data </a></li>		            	
+		            </ul>
+				</form>				
+			</div>
+			<div data-role="footer" data-position="fixed">
+			    <h4>" Vocabulary is an instrument of English "</h4>	       
+			</div>
+		</div>		
+	</body>	
+</html>
+

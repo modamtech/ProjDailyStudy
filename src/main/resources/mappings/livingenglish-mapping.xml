@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LivingEnglishDAO">
+
+	<update id="insertVocaTmp" parameterType="java.util.HashMap">	 
+		insert tb_ybm_living_english_tmp
+		      (num, word, tag, frequency, order_priority, mean, word_eng_example, 
+               word_kor_example, word_eng_example2, word_kor_example2, start_date, 
+               status)
+        select num, word, tag, frequency, order_priority, mean, word_eng_example, 
+               word_kor_example, word_eng_example2, word_kor_example2, start_date, 
+               status
+	      from tb_ybm_living_english
+	     where status != 'D'
+	       and (word like concat(${lower_apha},'%') or word like concat(${upper_apha},'%'))
+	     order by word 
+		       limit 1
+	</update>
+	
+	<delete id="deleteVocaTmp">
+        delete from tb_ybm_living_english_tmp
+	</delete>	
+	
+	<select id="selectVocaTmp" resultType="dstudy">
+       select num, word, tag, frequency, order_priority, mean, 
+              word_eng_example, word_kor_example, word_eng_example2, word_kor_example2, 
+              start_date, status  
+	     from tb_ybm_living_english_tmp
+	    limit 1
+	</select>	
+
+	<update id="completeVocaTmp" parameterType="java.util.HashMap">
+		 update tb_ybm_living_english
+            set status     = #{status}
+	    	  , frequency  = ${frequency}            
+	          , start_date = date_format(now(),'%Y-%m-%d %H:%i:%S')
+	   	  where num = ${num}		 
+	</update>
+	
+	<select id="getTotalTodayStudy" resultType="string">
+		select count(*) as num 
+		  from tb_ybm_living_english
+		 where start_date like concat(date_format(now(),'%Y-%m-%d'),'%')
+		   and status = 'D'
+	</select>	
+	
+	<update id="updatePriorityDate" parameterType="string">
+		 update tb_ybm_living_english
+			set order_priority = order_priority + 1 
+			  , priority_date  = date_format(now(),'%Y-%m-%d %H:%i:%S')			                     
+		  where num = ${num}
+	</update>
+	
+	<update id="updateStatus">
+		 update tb_ybm_living_english
+            set status         = 'S'
+	          , start_date     = date_format(now(),'%Y-%m-%d %H:%i:%S')
+	   	  where status         = 'N'        	
+	        and word in           	
+	   	        (select word from daily_study_list	    	
+	    	      where (date_format(study_date,'%Y-%m-%d') <![CDATA[>]]> date_format(DATE_SUB(NOW(), INTERVAL 1 DAY),'%Y-%m-%d')))	   	  
+	</update>	
+	
+	<insert id="insertBasicVoca" parameterType="string">
+		 insert daily_basic_voca
+		 select word, 'N', date_format(now(),'%Y-%m-%d %H:%i:%S')
+		   from tb_ybm_living_english
+	 	  where num = ${num}	
+	</insert>
+
+	<select id="getTotalCount" resultType="dstudynum">
+			select count(*) as num 
+			  from tb_ybm_living_english
+	</select>
+	
+	<select id="getMaxNum" resultType="dstudynum" parameterType="string">
+	        SELECT max(no) as num FROM tb_ybm_living_english_sentence
+			 WHERE word = #{strWord}
+	</select>	
+	
+	<select id="getCrrNum" resultType="String">
+       select num
+		 from tb_ybm_living_english
+		where curr_num  = '*'
+	</select>
+	
+	<select id="getCrrStatus" resultType="String">
+       select status
+		 from tb_ybm_living_english
+		where num = ${num}	
+	</select>	
+
+	<select id="getDailyVocaNotAll" resultType="dstudy" parameterType="java.util.HashMap">
+       ${varSql}	
+	</select>	
+
+	<select id="getStudyXml" resultType="dxmlstudy" >
+       select test, no, seq, org_text, short_text, create_date  
+	     from daily_sentence
+	    order by no, seq asc 	
+	</select>
+	
+	<update id="updateStartDate" parameterType="string">
+		 update tb_ybm_living_english
+			set start_date = date_format(now(),'%Y-%m-%d %H:%i:%S')				
+		  where num = ${num}
+		    and ifnull(start_date,'xxxx') not like concat(date_format(now(),'%Y'),'%')
+	</update>
+	
+	<insert id="insertTtsText" parameterType="java.util.HashMap">
+	    insert tb_ybm_living_english_sentence (num, word, no, sentence, create_date) 
+	    values (${num},#{word},${no}, #{sentence}, date_format(now(),'%Y-%m-%d'))
+	</insert>
+	
+	<insert id="insertDailyStudyList" parameterType="java.util.HashMap">
+        insert daily_study_list (num, word, study_date, start_date, create_date) 
+        values (${num},#{word}, date_format(now(),'%Y-%m-%d'), #{startdate}, date_format(now(),'%Y-%m-%d'))	
+	</insert>
+	
+	<update id="updateDailyStudyList" parameterType="java.util.HashMap">
+        update daily_study_list
+           set study_date = date_format(now(),'%Y-%m-%d')
+         where num  = ${num} 
+           and word = #{word}
+	</update>
+	
+	<update id="updateDone" parameterType="string">
+		 update tb_ybm_living_english
+			set status = 'D'
+			  , start_date = case when ifnull(start_date,'xxxx') = 'xxxx' then 
+			                      date_format(now(),'%Y-%m-%d %H:%i:%S')
+			                 else start_date end
+			  , finish_date = date_format(now(),'%Y-%m-%d %H:%i:%S')
+		  where num = ${num}			  
+	</update>	
+		
+	<update id="updateFrequency" parameterType="string">
+		 update tb_ybm_living_english
+			set frequency  = frequency + 1
+			  , status     = 'S'			  
+			  , start_date = date_format(now(),'%Y-%m-%d %H:%i:%S')				
+		  where num = ${num}
+	</update>	
+	
+	<update id="updateNextNum" parameterType="string">
+		 update tb_ybm_living_english
+			set curr_num   = '*'		
+		  where num = ${num}
+	</update>		
+	
+	<update id="clearStarMark">
+		 update tb_ybm_living_english
+			set curr_num   = ''	
+	</update>
+
+	<select id="selectLivingEngTmp" resultType="dlivingeng" parameterType="string">
+       select num, expr1, expr2, expr3, expr4, expr5, main_expr as mainExpr, 
+              frequency, status,       create_date as createDate, 
+              start_date as startDate, finish_date as finishDate 
+	     from tb_ybm_living_english
+	    where num     = ${num}
+	</select>	
+	
+</mapper>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toeic>
+<item>
+	<no>05</no>
+	<content_c>
+		<sentence>Lights have been installed in a hallway.</sentence>
+	</content_c>
+	<content_d>
+		<sentence>Some artwork has been hung on walls.</sentence>
+	</content_d>	
+</item>
+<item>
+	<no>21</no>
+	<content_p>
+		<sentence_p1>The sculpture exhibit will have its grand opening on Saturday.</sentence_p1>
+	</content_p>
+	<content_a>
+		<sentence>The one downtown.</sentence>
+	</content_a>
+	<content_b>
+		<sentence>Will the artist attend it?</sentence>
+	</content_b>
+	<content_c>
+		<sentence>Art class on weekends.</sentence>
+	</content_c>	
+</item>
+<item>
+    <no>22</no>
+	<content_p>
+	    <sentence_p1>
+	    	Can you show me the shelf with Jim Arnold's new book?
+	    </sentence_p1>
+    </content_p>
+	<content_a>
+        <sentence>Sorry, he's busy right now.</sentence>
+    </content_a>    
+	<content_b>
+	    <sentence>You have a point.</sentence>
+    </content_b>
+   	<content_c>
+	    <sentence>It's already sold out.</sentence>
+    </content_c>
+</item>
+<item>
+    <no>24</no>
+	<content_p>
+	    <sentence_p1>
+	    	Where did you put the final draft of the magazine cover?
+	    </sentence_p1>
+    </content_p>
+	<content_a>
+        <sentence>lt's not due until tomorrow.</sentence>
+    </content_a>    
+	<content_b>
+	    <sentence>He liked the photograph.</sentence>
+    </content_b>
+   	<content_c>
+	    <sentence>I have a one-year subscription.</sentence>
+    </content_c>
+</item>
+<item>
+    <no>25</no>
+	<content_p>
+	    <sentence_p1>
+	    	How will the ballroom be decorated for the annual banquet?
+	    </sentence_p1>
+    </content_p>
+	<content_a>
+        <sentence>Yes, to present staff awards.</sentence>
+    </content_a>    
+	<content_b>
+	    <sentence>I appreciate your help.</sentence>
+    </content_b>
+   	<content_c>
+	    <sentence>Jenny could tell you that.</sentence>
+    </content_c>
+</item>
+<item>
+    <no>28</no>
+	<content_p>
+	    <sentence_p1>
+	    	How long is the drive to Grand Rapids Resort?
+	    </sentence_p1>
+    </content_p>
+	<content_a>
+        <sentence>Haven't you been there before?</sentence>
+    </content_a>    
+	<content_b>
+	    <sentence>No, there isn't much traffic.</sentence>
+    </content_b>
+   	<content_c>
+	    <sentence>Anytime after four o'clock.</sentence>
+    </content_c>
+</item>
+<item>
+    <no>32</no>
+	<content_p>
+	    <sentence_p1>
+            Good morning. I'd like to send a dozen pink roses to a friend of mine.#
+            Do you deliver to Berkshire?
+	    </sentence_p1>
+	    <sentence_p2>
+	    	Yes, we do, but there's an extra charge of fifteen pounds because it's outside our normal delivery zone.
+	    </sentence_p2>
+	    <sentence_p3>
+            That's fine. I'd like them delivered on Friday morning to her office. I want to include a personal message#
+            on the card, but I'd rather not come into your shop in person.
+	    </sentence_p3>
+	    <sentence_p4>
+            That's not an issue. If you tell me what you want, I can write it for you.#
+            Go ahead when you're ready.
+	    </sentence_p4>
+    </content_p>
+	<content_a>
+        <sentence>Haven't you been there before?</sentence>
+    </content_a>    
+	<content_b>
+	    <sentence>No, there isn't much traffic.</sentence>
+    </content_b>
+   	<content_c>
+	    <sentence>Anytime after four o'clock.</sentence>
+    </content_c>
+</item>
+<item>
+    <no>36</no>
+	<content_p>
+	    <sentence_p1>
+            Good morning. I'm Seiko Nimiya from Delaney Tech. I'm scheduled to demonstrate#
+            how to use our new video projection system to your sales team at 10 A.M.
+	    </sentence_p1>
+	    <sentence_p2>
+            Yes, Ms. Nimiya. We're ready for you in conference room 3.#
+            Do you need any assistance in unloading the equipment?
+	    </sentence_p2>
+	    <sentence_p3>
+			Thanks, but I am fine. It's quite compact, so this cart is all I need.
+	    </sentence_p3>
+	    <sentence_p4>
+            All right. And you should know that in addition to our sales team,#
+            a few other managers have decided to sit in on your presentation.
+	    </sentence_p4>
+	    <sentence_p5>
+	    	Great. The more people to see it, the better.
+	    </sentence_p5>	    
+    </content_p>
+	<content_a>
+        <sentence>Set up some equipment</sentence>
+    </content_a>    
+	<content_b>
+	    <sentence>Reserve a conference room</sentence>
+    </content_b>
+   	<content_c>
+	    <sentence>Help unload some items</sentence>
+    </content_c>
+   	<content_d>
+	    <sentence>Look for his manager</sentence>
+    </content_d>    
+</item>
+<item>
+    <no>39</no>
+	<content_p>
+	    <sentence_p1>
+            Ms. Gilligan, thank you for this opportunity. You know, our creative department#
+            loves your products—especially your colored pencils and sketchbooks.
+	    </sentence_p1>
+	    <sentence_p2>
+            I'm glad to hear that. We enjoy your advertising campaigns.
+	    </sentence_p2>
+	    <sentence_p3>
+            Thank you. Now, I'll be overseeing your account, but it will mainly be handled by# 
+            Todd here. Todd, why don't you get the meeting started?#
+	    </sentence_p3>
+	    <sentence_p4>
+            Sure, Alejandro. Ms. Gilligan, why did you decide to find a new advertising agency?
+	    </sentence_p4>
+	    <sentence_p5>
+            I was disappointed by our previous agency's performance. They had good ideas,#
+            but their campaigns were never ready on schedule.
+	    </sentence_p5>
+   	    <sentence_p6>
+            I see. We'll take that into account. Now, if you don't mind, I have some questions#
+            about your target market.
+	    </sentence_p6>   	    
+    </content_p>
+	<content_a>
+        <sentence>Set up some equipment</sentence>
+    </content_a>    
+	<content_b>
+	    <sentence>Reserve a conference room</sentence>
+    </content_b>
+   	<content_c>
+	    <sentence>Help unload some items</sentence>
+    </content_c>
+   	<content_d>
+	    <sentence>Look for his manager</sentence>
+    </content_d>    
+</item>
+</toeic>

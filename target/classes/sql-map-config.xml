@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- Alias 설정 -->
+	<typeAliases>
+		<typeAlias alias="dstudy"      type="com.modam.biz.dstudy.DstudyVO"    />	
+		<typeAlias alias="dstudynum"   type="com.modam.biz.dstudy.DstudyNumVO" />
+		<typeAlias alias="dxmlstudy"   type="com.modam.biz.dstudy.StudyXmlVO"  />
+		<typeAlias alias="dlivingeng"  type="com.modam.biz.dstudy.LivingEngVo" />
+		<typeAlias alias="livingenglishtopic" type="com.modam.biz.dstudy.LivingEngTopicVO" />
+		
+	</typeAliases>
+	<!-- DataSource 설정 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="org.mariadb.jdbc.Driver" />
+				<!--
+			    Server
+				<property name="url" value="jdbc:mariadb://localhost:3306/aeit" />
+				Local				
+				<property name="url" value="jdbc:mariadb://modamtech.com:3306/aeit" />
+                -->				
+				<property name="url" value="jdbc:mariadb://localhost:3306/aeit" />
+				<property name="username" value="aeit" />
+				<property name="password" value="susx2020" />
+				<!-- ping query -->
+   		        <property name="poolPingQuery" value="select 1"/>
+				<property name="poolPingEnabled" value="true"/>
+				<property name="poolPingConnectionsNotUsedFor" value="7200000"/>
+				<property name="poolMaximumActiveConnections" value="100"/>
+				<property name="poolMaximumIdleConnections" value="100"/>
+				<property name="poolTimeToWait" value="20000"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- Sql Mapper 설정 -->
+	<mappers>
+		<mapper resource="mappings/dstudy-mapping.xml" />
+		<mapper resource="mappings/livingenglish-mapping.xml" />	
+		<mapper resource="mappings/livingenglishtopic-mapping.xml" />
+	</mappers>
+</configuration>

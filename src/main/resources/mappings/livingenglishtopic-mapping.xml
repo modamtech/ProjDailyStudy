@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LivingEngTopicDAO">
+
+	<select id="initConnection">
+        select 1
+	</select>	
+
+	<update id="insertTopic" parameterType="java.util.HashMap">	
+		insert into tb_living_english_topic
+		    (
+		      topic_num, audio_file_date, volume_size, topic_kr, topic_en, topic_dur_start,
+		      topic_dur_end, native_dur_start, native_dur_end, etc_dur1_start, etc_dur1_end, 
+		      etc_dur2_start, etc_dur2_end, etc_dur3_start, etc_dur3_end, study_status,
+		      topic_frequency, native_frequency, curr_point, create_date, start_date, finish_date
+		    )
+	    values
+		    ( 
+		      #{topic_num}, #{audio_file_date}, #{volume_size}, #{topic_kr}, #{topic_en}, ${topic_dur_start}, 
+		      ${topic_dur_end}, 0, 0, 0, 0, 0, 0, 0, 0, 'C','0', '0','', 
+		      date_format( now(),'%Y-%m-%d %H:%i:%S' ), '', '' 
+		    )
+	</update>
+	
+	<update id="saveTopic" parameterType="java.util.HashMap">
+		 update tb_living_english_topic
+			set topic_dur_start = ${topic_dur_start}
+			  , topic_dur_end   = ${topic_dur_end}
+		  	  , volume_size     = ${volume_size}
+		  	  , topic_kr        = #{topic_kr}
+			  , topic_en        = #{topic_en}
+			  , start_date      = date_format( now(),'%Y-%m-%d %H:%i:%S' )			                     
+		  where topic_num       = #{topic_num}
+		    and audio_file_date = #{audio_file_date}
+	</update>
+	
+	<update id="resetVolume" parameterType="string">
+		 update tb_living_english_topic
+            set volume_size     = ${volume_size}
+	</update>
+	
+	<update id="resetDurStart" parameterType="java.util.HashMap">
+		 update tb_living_english_topic
+            set topic_dur_start = ${topic_dur_start}
+		  where topic_num       = #{topic_num}
+		    and audio_file_date = #{audio_file_date}
+	</update>
+	
+	<update id="completeTopic" parameterType="java.util.HashMap">
+		 update tb_living_english_topic
+            set study_status = #{status}
+	          , finish_date  = date_format(now(),'%Y-%m-%d %H:%i:%S')
+		  where topic_num       = ${topic_num}
+		    and audio_file_date = ${audio_file_date}		 
+	</update>
+	
+	<select id="getFirstTopic" resultType="String">
+       select ifnull(topic_num, 0)
+		 from tb_living_english_topic
+		where study_status != 'D'
+	    -- and  ( start_date like concat(date_format(now(),'%Y-%m-%d'),'%') )		  
+		order by topic_num asc
+	    limit 1
+	</select>
+	
+	<select id="getLastTopic" resultType="String">
+       select topic_num
+		 from tb_living_english_topic
+		where study_status != 'D'
+		order by topic_num desc
+	    limit 1
+	</select>	
+	
+	<select id="selectTopic" resultType="livingenglishtopic">
+       select topic_num, audio_file_date, volume_size, topic_kr, topic_en, 
+              topic_dur_start, topic_dur_end, native_dur_start, native_dur_end, 
+              etc_dur1_start, etc_dur1_end, etc_dur2_start, etc_dur2_end, 
+              etc_dur3_start, etc_dur3_end, study_status, topic_frequency,
+		      native_frequency, curr_point, create_date, start_date, finish_date                     
+	     from tb_living_english_topic
+   	    where topic_num = ${topic_num}
+	</select>
+	
+</mapper>
