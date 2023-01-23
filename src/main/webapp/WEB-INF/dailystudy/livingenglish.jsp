@@ -25,7 +25,7 @@
     <div data-role="page" id="page1">  
 	    <div data-role="header"  data-position="fixed" data-theme="e">          
 			<h2 style="color:#800000;">MODAM VOCA</h2>
-			<a href="/mdm_routine_eng.html" data-icon="home" data-iconpos="notext">home</a>
+			<a href="/modam.html" data-icon="home" data-iconpos="notext">home</a>
 			 			
 			<div data-role="navbar">
 				<ul>

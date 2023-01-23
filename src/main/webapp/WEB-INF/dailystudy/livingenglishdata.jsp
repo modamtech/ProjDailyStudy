@@ -30,7 +30,7 @@
     <div data-role="page" id="page1">  
 	    <div data-role="header"  data-position="fixed" data-theme="e">          
 			<h2 style="color:#800000;">MODAM DIALOG</h2>
-			<a href="/modam.html" data-icon="home" data-iconpos="notext">home</a>
+			<a href="/modam.html" data-icon="home" data-iconpos="notext" onClick="player.pause();">home</a>
 			 			
 			<div data-role="navbar">
 				<ul>

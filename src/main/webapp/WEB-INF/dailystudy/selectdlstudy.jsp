@@ -13,6 +13,7 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/daily_study.css" />    
 
     <script src="js/daily_study.js"></script>
     <script src="js/modam.js"></script>    
