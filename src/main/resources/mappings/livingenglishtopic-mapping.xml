@@ -26,14 +26,14 @@
 	
 	<update id="saveTopic" parameterType="java.util.HashMap">
 		 update tb_living_english_topic
-			set topic_dur_start = ${topic_dur_start}
+			set	audio_file_date = #{audio_file_date} 
+			  , topic_dur_start = ${topic_dur_start}
 			  , topic_dur_end   = ${topic_dur_end}
 		  	  , volume_size     = ${volume_size}
 		  	  , topic_kr        = #{topic_kr}
 			  , topic_en        = #{topic_en}
 			  , start_date      = date_format( now(),'%Y-%m-%d %H:%i:%S' )			                     
 		  where topic_num       = #{topic_num}
-		    and audio_file_date = #{audio_file_date}
 	</update>
 	
 	<update id="resetVolume" parameterType="string">
