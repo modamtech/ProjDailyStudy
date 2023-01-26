@@ -27,19 +27,23 @@ public class LivingEnglishDataController {
     try {
     	intTopicNum = Integer.valueOf(pnum);
     } catch (Exception ex) {
-    	strTopicNum = vocaMgr.getLastTopic();
-    	if (strTopicNum == null) 
-    		intTopicNum = 0;
-    	else  	    
+    	try {
+    		strTopicNum = vocaMgr.getStartPointTopic();
     		intTopicNum = Integer.valueOf(strTopicNum);
+    	} catch(Exception ex2) {   
+        	intTopicNum = Integer.valueOf(vocaMgr.getLastTopic());
+    	}
     }
         
-    if ("0".equals(drctStatus)) {
+    if ("0".equals(drctStatus)) { // back
   	    intTopicNum = Integer.valueOf(vocaMgr.getFirstTopic());
-    } else if ("2".equals(drctStatus)) {
+    } else if ("2".equals(drctStatus)) { // foreward
     	intTopicNum = intTopicNum + 1;
-    } else if ("1".equals(drctStatus)) {
+    } else if ("1".equals(drctStatus)) {// backward
     	intTopicNum = intTopicNum - 1;
+    } else if ("3".equals(drctStatus)) {// completed
+    	vocaMgr.updateStudyStatusTopic(String.valueOf(intTopicNum));
+    	intTopicNum = intTopicNum + 1;
     }
         
     try {
@@ -74,18 +78,6 @@ public class LivingEnglishDataController {
   public @ResponseBody String resetVolume(String topic_num, String audio_file_date, String volume_size, LivingEngTopicDAO vocaMgr, Model model) throws Exception {
     
     vocaMgr.resetVolume(volume_size);
-   
-    vocaMgr.closeMybatis();
-			
-    return "ok";
-  }
-  
-  @RequestMapping(value="/complete_topic.do")
-  public @ResponseBody String completeTopic(String topic_num, String audio_file_date, String topic_dur_start, String topic_dur_end, LivingEngTopicDAO vocaMgr, Model model) throws Exception {
-    
-    String strStatus = "D";
-    
-    vocaMgr.completeTopic(topic_num, audio_file_date, strStatus);
    
     vocaMgr.closeMybatis();
 			

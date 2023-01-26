@@ -24,6 +24,25 @@
 		    )
 	</update>
 	
+	<update id="exclusiveStatusTopic" parameterType="java.util.HashMap">
+		 update tb_living_english_topic
+			set	curr_point = ''	
+		  where curr_point = '*' 			                     
+	</update>
+	
+	<update id="updateStatusTopic" parameterType="java.util.HashMap">
+		 update tb_living_english_topic
+			set	curr_point = '*'			                     
+		  where topic_num  = #{topic_num}
+		    and study_status != 'D'
+	</update>
+	
+	<update id="updateStudyStatusTopic" parameterType="java.util.HashMap">
+		 update tb_living_english_topic
+			set	study_status = 'D'			                     
+		  where topic_num    = #{topic_num}
+	</update>
+	
 	<update id="saveTopic" parameterType="java.util.HashMap">
 		 update tb_living_english_topic
 			set	audio_file_date = #{audio_file_date} 
@@ -48,14 +67,6 @@
 		    and audio_file_date = #{audio_file_date}
 	</update>
 	
-	<update id="completeTopic" parameterType="java.util.HashMap">
-		 update tb_living_english_topic
-            set study_status = #{status}
-	          , finish_date  = date_format(now(),'%Y-%m-%d %H:%i:%S')
-		  where topic_num       = ${topic_num}
-		    and audio_file_date = ${audio_file_date}		 
-	</update>
-	
 	<select id="getFirstTopic" resultType="String">
        select ifnull(topic_num, 0)
 		 from tb_living_english_topic
@@ -65,13 +76,21 @@
 	    limit 1
 	</select>
 	
-	<select id="getLastTopic" resultType="String">
+	<select id="getStartPointTopic" resultType="String">
        select topic_num
+		 from tb_living_english_topic
+		where curr_point = '*'
+		  and study_status != 'D'
+	    limit 1
+	</select>
+	
+	<select id="getlastTopic" resultType="String">
+       select ifnull(topic_num, 0)
 		 from tb_living_english_topic
 		where study_status != 'D'
 		order by topic_num desc
 	    limit 1
-	</select>	
+	</select>
 	
 	<select id="selectTopic" resultType="livingenglishtopic">
        select topic_num, audio_file_date, volume_size, topic_kr, topic_en, 
@@ -81,6 +100,7 @@
 		      native_frequency, curr_point, create_date, start_date, finish_date                     
 	     from tb_living_english_topic
    	    where topic_num = ${topic_num}
+	  	  and study_status != 'D'
 	</select>
 	
 </mapper>

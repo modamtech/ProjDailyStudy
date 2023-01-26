@@ -140,6 +140,15 @@
 		order by word asc   
 	    limit 1
 	</select>	
+	
+	<select id="getMissingWord" resultType="String">
+       select lower(substring(word,1,1))
+		 from daily_voca
+		where status != 'D'	
+		  and ( start_date = '' or priority_date = '' ) 
+		order by word asc   
+	    limit 1
+	</select>
 
 	<select id="getDailyVocaNotAll" resultType="dstudy" parameterType="java.util.HashMap">
        ${varSql}	

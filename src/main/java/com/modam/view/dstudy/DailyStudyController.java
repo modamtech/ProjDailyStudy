@@ -25,7 +25,7 @@ public class DailyStudyController {
     List<DstudyVO> vlist = null;
     
     int intChr = 0;
-    
+
     try {
       
       if (!tts_word.equals("") && !num.equals("")) {
@@ -60,7 +60,9 @@ public class DailyStudyController {
   	    vlist    = vocaMgr.selectVocaTmp();
       }
     } catch (Exception e) {
-      tts_word = "a";
+      tts_word = vocaMgr.getMissingWord(); 
+      vocaMgr.deleteVocaTmp();
+      vocaMgr.insertVocaTmp(tts_word);
     } 
     
     vlist    = vocaMgr.selectVocaTmp();

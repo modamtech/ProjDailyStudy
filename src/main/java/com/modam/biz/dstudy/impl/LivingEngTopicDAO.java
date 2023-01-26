@@ -105,14 +105,17 @@ public class LivingEngTopicDAO {
     this.mybatis.commit();
   }
   
-  // LYH.201301
+  public String getStartPointTopic() {
+    return (String)this.mybatis.selectOne("LivingEngTopicDAO.getStartPointTopic");
+  }
+  
   public String getFirstTopic() {
     return (String)this.mybatis.selectOne("LivingEngTopicDAO.getFirstTopic");
   }
   
   public String getLastTopic() {
-	    return (String)this.mybatis.selectOne("LivingEngTopicDAO.getLastTopic");
-	  }
+    return (String)this.mybatis.selectOne("LivingEngTopicDAO.getlastTopic");
+  }
   
   public void insertTopic( String topic_num, String audio_file_date, String volume_size, String topic_kr, String topic_en, String topic_dur_start, String topic_dur_end ) {
 	    Map<String, Object> inputData = new HashMap<String, Object>();
@@ -142,6 +145,14 @@ public class LivingEngTopicDAO {
     this.mybatis.commit();
   }
   
+  public void updateStudyStatusTopic( String topic_num) {
+	Map<String, Object> inputData = new HashMap<String, Object>();	
+	
+    inputData.put( "topic_num" , topic_num );
+    this.mybatis.update("LivingEngTopicDAO.updateStudyStatusTopic", inputData);
+    this.mybatis.commit();
+  }
+
   public void resetVolume(String volume_size) {
 	Map<String, Object> inputData = new HashMap<String, Object>();	  
     
@@ -169,24 +180,16 @@ public class LivingEngTopicDAO {
     this.mybatis.commit();
   }
   
-  public void completeTopic(String topic_num, String audio_file_date, String status) {
-	Map<String, Object> inputData = new HashMap<String, Object>();	  
-    
-    inputData.put("topic_num"      , topic_num);
-    inputData.put("audio_file_date", audio_file_date);
-    inputData.put("status"         , status);
-    try {
-      this.mybatis.insert("LivingEngTopicDAO.completeTopic", inputData);
-    } catch (Exception e) {
-      this.logger.debug(e.getMessage().toString());
-    } 
-    this.mybatis.commit();
-  }
-  
   public List<LivingEngTopicVO> selectTopic(String num) {
 	Map<String, Object> inputData = new HashMap<String, Object>();	  
     inputData.put("topic_num", num);
 	  
+    this.mybatis.update("LivingEngTopicDAO.exclusiveStatusTopic", inputData);
+    
+    this.mybatis.update("LivingEngTopicDAO.updateStatusTopic", inputData);
+    
+    this.mybatis.commit();
+    
     return this.mybatis.selectList("LivingEngTopicDAO.selectTopic", inputData);
   }
   
@@ -210,9 +213,9 @@ public class LivingEngTopicDAO {
 		
 	inputData.put("num",        num);
 	inputData.put("word_guess", strWordGuess);
-	System.out.println("123");
+
     this.mybatis.update("LivingEngTopicDAO.updateWordGuess", inputData);
-	System.out.println("456s");    
+   
     this.mybatis.commit();
   }
 

@@ -46,33 +46,33 @@
 			<form id="frmTopic" name="frmTopic" method=post action="/livingenglishdata.do">
 				<!-- 한/영 Topic 레이아웃 -->
 				<fieldset class="ui-grid-a">
-					<div class="ui-block-a">
+					<div class="ui-block-a" style="width: 25%;">
 						<p style="font-size: 16px;">한글 Topic</p>
                        </div>
-					<div class="ui-block-b">
+					<div class="ui-block-b" style="width: 75%;">
                             <textarea id="topic_kr" name="topic_kr" cols="30" rows="2" required wrap="hard" 
                                       style="resize: vertical; background-color: #FFFFFF; font-size: 16px;">${topicBean.getTopicKr()}</textarea>
                        </div>
-					<div class="ui-block-a">
+					<div class="ui-block-a" style="width: 25%;">
 					    <p style="font-size: 16px;">영어 Topic</p>
                        </div>
-					<div class="ui-block-b">
+					<div class="ui-block-b" style="width: 75%;">
                             <textarea id="topic_en" name="topic_en" cols="30" rows="2" required wrap="hard" 
                                       style="resize: vertical; background-color: #FFFFFF; font-size: 16px;">${topicBean.getTopicEng()}</textarea>
                        </div>   							
 				</fieldset>
 				<!-- Topic No/File Name 레이아웃 -->
-				<fieldset class="ui-grid-a">
+				<fieldset class="ui-grid-c">
 					<div class="ui-block-a">
 						<p style="font-size: 16px;">Topic No</p>
                     </div>
 					<div class="ui-block-b">
 				        <input id="topic_num" type="text" value="${topicBean.getTopicNum()}" />
                     </div>
-					<div class="ui-block-a">
+					<div class="ui-block-c">
 					    <p style="font-size: 16px;">Audio File</p>
                     </div>
-					<div class="ui-block-b">
+					<div class="ui-block-d">
 					    <input id="audio_file_date" type="text" value="${topicBean.getAudioFileDate()}" />
                     </div>   							
 				</fieldset>
@@ -95,6 +95,21 @@
 					   </audio>
 					</div>
                 </fieldset>
+				<!-- Topic Duration Setting 버튼 레이아웃 -->
+				<fieldset class="ui-grid-b" >
+					<div class="ui-block-a">
+						<input type="radio" name="rad_dur" id="rad_dur0" value="r0" checked="checked" />
+						<label for="rad_dur0">Full Dialog</label>
+                    </div>
+					<div class="ui-block-b">
+						<input type="radio" name="rad_dur" id="rad_dur1" value="r1" />
+						<label for="rad_dur1">Topic Dialog</label>
+                    </div>
+					<div class="ui-block-c">
+						<input type="radio" name="rad_dur" id="rad_lesson_dur" value="r2" />
+						<label for="rad_lesson_dur">Lesson Dialog</label>
+                    </div>
+				</fieldset>
 				<!-- Topic Duration Setting 버튼 레이아웃 -->
 				<fieldset class="ui-grid-b">
 					<div class="ui-block-a">

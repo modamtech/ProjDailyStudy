@@ -59,6 +59,10 @@ public class DstudyDAO {
     return (String)this.mybatis.selectOne("DstudyDAO.getFirstWord");
   }
   
+  public String getMissingWord() {
+    return (String)this.mybatis.selectOne("DstudyDAO.getMissingWord");
+  }
+  
   public List<DstudyVO> selectVocaTmp() {
     return this.mybatis.selectList("DstudyDAO.selectVocaTmp");
   }
@@ -149,9 +153,9 @@ public class DstudyDAO {
 		
 	inputData.put("num",        num);
 	inputData.put("word_guess", strWordGuess);
-	System.out.println("123");
+
     this.mybatis.update("DstudyDAO.updateWordGuess", inputData);
-	System.out.println("456s");    
+   
     this.mybatis.commit();
   }
   
@@ -212,6 +216,7 @@ public class DstudyDAO {
   }
   
   public void insertVocaTmp(String pword) {
+
     Map<String, Object> inputData = new HashMap<String, Object>();
     int intChr = pword.charAt(0);
     if (intChr > 122)
@@ -222,6 +227,7 @@ public class DstudyDAO {
     String str_upper = "'" + String.valueOf(chr_upper) + "'";
     inputData.put("lower_apha", str_lower);
     inputData.put("upper_apha", str_upper);
+
     this.mybatis.insert("DstudyDAO.insertVocaTmp", inputData);
     this.mybatis.commit();
   }
