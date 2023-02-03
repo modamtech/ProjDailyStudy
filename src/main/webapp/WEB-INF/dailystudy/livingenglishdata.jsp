@@ -69,10 +69,10 @@
 					<div class="ui-block-b">
 				        <input id="topic_num" type="text" value="${topicBean.getTopicNum()}" />
                     </div>
-					<div class="ui-block-c">
-					    <p style="font-size: 16px;">Audio File</p>
+					<div class="ui-block-c" style="width: 20%;">
+					    <p style="font-size: 16px;">Audio</p>
                     </div>
-					<div class="ui-block-d">
+					<div class="ui-block-d" style="width: 30%;">
 					    <input id="audio_file_date" type="text" value="${topicBean.getAudioFileDate()}" />
                     </div>   							
 				</fieldset>
@@ -98,16 +98,16 @@
 				<!-- Topic Duration Setting 버튼 레이아웃 -->
 				<fieldset class="ui-grid-b" >
 					<div class="ui-block-a">
-						<input type="radio" name="rad_dur" id="rad_dur0" value="r0" checked="checked" />
-						<label for="rad_dur0">Full Dialog</label>
-                    </div>
-					<div class="ui-block-b">
 						<input type="radio" name="rad_dur" id="rad_dur1" value="r1" />
-						<label for="rad_dur1">Topic Dialog</label>
+						<label for="rad_dur1">Topic</label>
+                    </div>				
+					<div class="ui-block-b">
+						<input type="radio" name="rad_dur" id="rad_dur0" value="r0" checked="checked" />
+						<label for="rad_dur0">Full</label>
                     </div>
 					<div class="ui-block-c">
 						<input type="radio" name="rad_dur" id="rad_lesson_dur" value="r2" />
-						<label for="rad_lesson_dur">Lesson Dialog</label>
+						<label for="rad_lesson_dur">Lesson</label>
                     </div>
 				</fieldset>
 				<!-- Topic Duration Setting 버튼 레이아웃 -->
