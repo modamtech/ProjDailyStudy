@@ -22,11 +22,12 @@
     </head>
     <body>
    	<% %>            
-    <div data-role="page" id="page1">  
-	    <div data-role="header"  data-position="fixed" data-theme="e">          
+    <div data-role="page" id="page1"> 
+	    <div data-role="header"  data-position="fixed" data-theme="e">
+            <!--	              
 			<h2 style="color:#800000;">MODAM VOCA</h2>
 			<a href="/modam.html" data-icon="home" data-iconpos="notext">home</a>
-			 			
+			--> 			
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#"      data-icon="carat-r"  onClick="submitWord('2', '${varSortStatus}', '${vocaBean.getNum()}')">NEXT</a></li>
@@ -136,7 +137,9 @@
 					</h4>
 				</div>
 			</div>
+			<!-- 
 			<a href="/modam.html" data-icon="home" data-iconpos="notext">home</a>
+			 -->
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#page1" data-icon="carat-l"  style="background-color:#E9E9E9;color:#800000;">BACK</a></li>

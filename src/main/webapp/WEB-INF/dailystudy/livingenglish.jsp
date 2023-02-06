@@ -23,10 +23,11 @@
     <body onLoad="init()">
    	<% %>            
     <div data-role="page" id="page1">  
-	    <div data-role="header"  data-position="fixed" data-theme="e">          
+	    <div data-role="header"  data-position="fixed" data-theme="e"> 
+	     <!--         
 			<h2 style="color:#800000;">MODAM VOCA</h2>
 			<a href="/modam.html" data-icon="home" data-iconpos="notext">home</a>
-			 			
+		 -->	 			
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#"      data-icon="arrow-r"  onclick="updateNextNum('${exprBean.getNum()}')">Next</a></li>
